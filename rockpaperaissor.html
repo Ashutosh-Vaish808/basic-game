@@ -1,36 +1,7 @@
 <!doctype html>
 <head>
     <title>Rock paper scissor </title>
-    <style>
-        body{
-            background-color:rgb(15, 14, 14);
-            color:white;
-            font-family: arial;
-            font-size: 30px;
-            }
-        .titel{
-            font-weight: bolder;
-            }
-        .image{
-            max-height: 120px;
-            max-width: 120px;
-            margin-right: 15px;
-            cursor: pointer;
-            
-        } 
-        .moves{
-            max-width: 80px;
-            max-height: 80px;
-            margin-top: 30px;
-            margin-right: 20px;
-        } 
-        .reset-button{
-            padding:10px;
-            margin-top: 20px;
-            font-size: 110%;
-            background-color: grey;
-        } 
-    </style>
+    <link rel="stylesheet" href="./rockpaperscissor.css">
 </head>
 <body>
     <p class="title">Rock Paper Scissor</p>
@@ -60,80 +31,6 @@
     updateScore()" class="reset-button">
         RESET SCORE
     </button>
-    <script>
-        
-       
-        const score=JSON.parse(localStorage.getItem('score'))||{wins:0,loses:0,ties:0}
-        function updateScore(){
-            document.querySelector('.js-score').innerHTML=` wins:${score.wins},loses:${score.loses}, ties:${score.ties}`
-        }
-        let computermove='';
-        function pickComputermove(){
-            let x=Math.random();
-            if(x>=0&&x<=1/3){computermove='rock';}
-            else if(x>1/3&&x<=2/3){computermove='paper';}
-            else{computermove='scissor';}
-            
-        }
-      
-
-        function game(playermove){
-            
-            pickComputermove();
-        let result='';
-             if (playermove==='rock'){
-                   
-                if(computermove==='rock'){
-                        result='its a tie'
-                    }
-                else if(computermove==='paper'){
-                        result='you lose'
-                    }
-                else{
-                    result='you win'
-                    }
-                }
-            else if(playermove==='paper'){
-                pickComputermove();
-                result='';
-                if(computermove==='rock'){
-                    result='you win'
-                }
-                else if(computermove==='paper'){
-                    result='its a tie'
-                }
-                else{
-                    result='you lose'
-                }
-            }
-            else {playermove==='scissor'
-                if(computermove==='rock'){
-                result='youlose'
-                }
-                else if(computermove==='paper'){
-                result='you win'
-                }
-             else{
-                result=('its a tie')
-                }
-            }
-            if(result==='you win'){
-                score.wins+=1
-            }
-            else if(result==='you lose'){
-                score.loses+=1
-            }
-            else{
-                score.ties+=1
-            }
-            localStorage.setItem('score', JSON.stringify(score)); 
-            updateScore();
-            document.querySelector('.js-result').innerHTML=`${result}`
-            document.querySelector('.js-computer-move').innerHTML=`you chose
-            <img src="images/${playermove}.png" class="moves">
-            <img src="images/${computermove}.png" class="moves">computer chose`             
-        }
-
-    </script>
+    <script src="./rockpaperscissor.js"></script>
 </body>
     
